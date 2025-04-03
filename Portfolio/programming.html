@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Projects</title>
+    <style>
+        /* ===== BASE STYLES ===== */
+        body {
+          margin: 0;
+          font-family: 'Arial', sans-serif;
+          overflow-x: hidden;
+          line-height: 1.6;
+          background: #f8f9fa;
+          padding: 20px;
+        }
+
+        /* ===== NAVBAR STYLES ===== */
+        .navbar {
+          position: sticky;
+          top: 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 1.5rem 2rem;
+          backdrop-filter: blur(10px);
+          z-index: 1000;
+          background: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-links {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .nav-links a {
+          color: purple;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 1.1rem;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+
+        .nav-links a:hover {
+          color: #fc00ff;
+        }
+
+        .nav-links a::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -5px;
+          left: 0;
+          background: #fc00ff;
+          transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+          width: 100%;
+        }
+
+        .nav-links a.active {
+          color: #fc00ff;
+        }
+
+        .nav-links a.active::after {
+          width: 100%;
+        }
+
+        /* Typewriter effect for h2 */
+        .typewriter {
+          overflow: hidden;
+          border-right: .15em solid #69226a;
+          white-space: nowrap;
+          margin: 0 auto;
+          letter-spacing: .15em;
+          animation: 
+            typing 2.5s steps(40, end),
+            blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+          from, to { border-color: transparent }
+          50% { border-color: #69226a; }
+        }
+
+        h2 {
+          color: #69226a;
+          font-size: 2.5rem;
+          margin: 2rem 0;
+          display: inline-block;
+        }
+
+        .esta {
+          background: white;
+          padding: 2rem;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          margin-bottom: 2rem;
+          transition: transform 0.3s ease;
+        }
+
+        .esta:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .esta h3 {
+          color: #69226a;
+          margin-top: 0;
+          font-size: 1.5rem;
+        }
+
+        .esta p {
+          color: #555;
+          line-height: 1.6;
+        }
+
+        .code-features {
+          margin-top: 1rem;
+          padding-left: 20px;
+        }
+
+        .code-features li {
+          margin-bottom: 0.5rem;
+          color: #444;
+        }
+
+        .tech-details {
+          background: #f0f0f0;
+          padding: 1.5rem;
+          border-radius: 8px;
+          margin-top: 1.5rem;
+          border-left: 4px solid #69226a;
+        }
+
+        .tech-details h4 {
+          color: #69226a;
+          margin-top: 0;
+        }
+
+        .feature-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+
+        .feature-card {
+          background: white;
+          padding: 1rem;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          border-top: 3px solid #69226a;
+        }
+
+        .feature-card h5 {
+          margin-top: 0;
+          color: #69226a;
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+          .navbar {
+            padding: 1rem;
+          }
+          
+          .nav-links {
+            gap: 1rem;
+          }
+          
+          h2 {
+            font-size: 2rem;
+          }
+          
+          .feature-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="Portfolio.html" class="active">Home</a>
+            <a href="Portfolio.html#about">About</a>
+            <a href="Portfolio.html#projects">Projects</a>
+            <a href="Portfolio.html#socials">Socials</a>
+        </div>
+    </nav>
+
+    <h2 class="typewriter">PROGRAMMING PROJECTS</h2>
+
+    <div class="esta">
+        <h3>Snake Game in C</h3>
+        <p>A fully-featured console-based Snake game implementation using C programming language with advanced features like score tracking, sound effects, and highscore saving.</p>
+        
+        <div class="tech-details">
+            <h4>Technical Implementation</h4>
+            <p>The game was developed using fundamental C programming concepts with these key components:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h5>Core Game Loop</h5>
+                    <ul>
+                        <li>Real-time keyboard input handling</li>
+                        <li>Smooth snake movement algorithm</li>
+                        <li>Collision detection system</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h5>Advanced Features</h5>
+                    <ul>
+                        <li>Score tracking with increasing difficulty</li>
+                        <li>Sound effects using Windows API</li>
+                        <li>Persistent highscore system</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h5>Technical Highlights</h5>
+                    <ul>
+                        <li>Array-based snake body tracking</li>
+                        <li>File I/O for highscores</li>
+                        <li>Console cursor manipulation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tech-details">
+            <h4>Development Challenges</h4>
+            <p>The project involved solving several interesting programming challenges:</p>
+            <ul class="code-features">
+                <li>Implementing smooth snake movement with body segments</li>
+                <li>Creating flicker-free console rendering without standard graphics libraries</li>
+                <li>Developing a robust file I/O system for highscores</li>
+                <li>Handling real-time keyboard input without blocking the game loop</li>
+                <li>Managing game state transitions between menus and gameplay</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
