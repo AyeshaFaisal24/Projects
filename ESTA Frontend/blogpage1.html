@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Winter Skincare Essentials</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        /* background: linear-gradient(135deg, #f5f3fa, #edeaf6, #e6e3f3); */
+        background: linear-gradient(135deg, #f7f8fc, #eae8ff, #dcd7f3, #f3eef8);
+
+        margin: 0;
+        padding: 0;
+      }
+
+      .top-logo {
+        text-align: center;
+        background: linear-gradient(135deg, #e6e6fa, #d8bfd8, #e0bbe4);
+        padding: 0px;
+      }
+
+      .top-logo .logo-image {
+        max-width: 120px;
+        height: auto;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+
+      /* Overall Navbar Styling */
+      .navbar {
+        background: linear-gradient(135deg, #f7f7f7, #eaeaea, #dddddd, #d0d0d0);
+        /* background: linear-gradient(135deg, #E6E6FA, #D8BFD8, #E0BBE4); */
+        padding: 15px 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Left-aligned Links */
+      .navbar-left {
+        padding-left: 180px;
+        justify-content: center;
+        display: flex;
+        gap: 50px; /* Adjust spacing between links */
+      }
+
+      .navbar-left a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 5px 10px; /* Add padding for larger clickable area */
+        transition: color 0.3s, background-color 0.3s; /* Smooth transition on hover */
+        border-radius: 5px;
+        display: inline-flex;
+      }
+
+      .navbar-left a:hover {
+        color: #9370db;
+      }
+
+      /* Dropdown Styling */
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-toggle {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        color: #333;
+        font-weight: 600;
+        padding: 5px 10px;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 120%;
+        left: 0;
+        background-color: #dfd3d3;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        padding: 10px 0;
+        min-width: 200px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+      }
+
+      .dropdown-menu a {
+        display: block;
+        padding: 12px 20px;
+        color: #333;
+        text-decoration: none;
+        font-size: 15px;
+        transition: background-color 0.3s;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: #f0f7f5;
+        /* color: #00a27f; */
+        color: #b19cd9; /* Soft lavender */
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Right-aligned Icons */
+      .navbar-right {
+        display: flex;
+        margin-left: auto; /* Pushes icons to the right */
+        gap: 20px;
+      }
+
+      .icon-link {
+        font-size: 20px;
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        transition: color 0.3s, background-color 0.3s;
+        border-radius: 5px;
+      }
+
+      .icon-link:hover {
+        color: #ffffff;
+        /* background-color: #00a27f; */
+        color: #b19cd9; /* Soft lavender */
+      }
+
+      /* Cart Panel Styling */
+      .cart-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 0; /* Hidden by default */
+        height: 100%;
+        background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+        overflow-x: hidden;
+        transition: width 0.3s ease; /* Smooth transition for sliding effect */
+        z-index: 1000; /* Ensure it appears above other elements */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Footer stays at the bottom */
+      }
+
+      /* Content inside the cart */
+      .cart-panel-content {
+        padding: 20px;
+        font-family: "Montserrat", sans-serif;
+        color: #333;
+        flex-grow: 1; /* Expand to take up available space */
+        overflow-y: auto; /* Enable scrolling for long content */
+      }
+
+      /* Header */
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .cart-header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #5e4787; /* Soft lavender */
+        margin: 0;
+      }
+
+      .close-cart-btn {
+        font-size: 20px;
+        cursor: pointer;
+        color: #bbb;
+        transition: color 0.3s ease;
+      }
+
+      .close-cart-btn:hover {
+        color: #333;
+      }
+
+      /* Cart Status */
+      .cart-status {
+        text-align: center;
+        font-size: 16px;
+        color: #777;
+        margin: 20px 0;
+      }
+
+      /* Footer */
+      .cart-footer {
+        padding: 20px 30px; /* Adjust padding for proper spacing */
+        background: #ffffff;
+        box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.05); /* Add shadow above the footer */
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Horizontally center items */
+        justify-content: center; /* Vertically center items */
+        text-align: center; /* Centers text if needed */
+      }
+
+      /* Checkout Button */
+      .checkout-btn {
+        width: 80%; /* Adjust width for better appearance */
+        max-width: 300px; /* Optional: Set a max width for the button */
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(
+          to right,
+          #b19cd9,
+          #9370db
+        ); /* Button gradient */
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(145, 112, 219, 0.2);
+        margin-top: 10px; /* Space above the button */
+        margin-left: 35px;
+        margin-bottom: 10px;
+      }
+
+      .checkout-btn:hover {
+        background: linear-gradient(to right, #9370db, #b19cd9);
+        transform: translateY(-2px); /* Subtle hover animation */
+        box-shadow: 0 6px 15px rgba(145, 112, 219, 0.3);
+      }
+
+      /* General Popup Styling */
+      .login-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Flip Card Structure */
+      .flip-card {
+        width: 400px;
+        height: 500px;
+        perspective: 1000px; /* Adds 3D perspective */
+        position: relative;
+      }
+
+      /* Flip Card Front and Back */
+      .flip-card-front,
+      .flip-card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden; /* Hides the back side by default */
+        transition: transform 0.6s ease-in-out; /* Smooth flipping animation */
+        background: linear-gradient(
+          135deg,
+          #f1f8fb,
+          #f3ebfb,
+          #e7f1f8
+        ); /* Soft lavender gradient */
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        padding: 30px;
+        text-align: center;
+      }
+
+      /* Front Side: Login Form */
+      .flip-card-front {
+        transform: rotateY(0); /* Default: visible side */
+      }
+
+      /* Back Side: Register Form */
+      .flip-card-back {
+        transform: rotateY(180deg); /* Hidden by default */
+      }
+
+      /* Flipped State */
+      .flip-card.flipped .flip-card-front {
+        transform: rotateY(-180deg); /* Rotate out of view */
+      }
+
+      .flip-card.flipped .flip-card-back {
+        transform: rotateY(0); /* Rotate into view */
+      }
+
+      /* Close Button */
+      .close-login-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        color: #666;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+      }
+
+      .close-login-btn:hover {
+        background-color: #ffebe5;
+        color: #d9534f;
+        border-color: #d9534f;
+      }
+
+      /* Headings */
+      .flip-card-front h2,
+      .flip-card-back h2 {
+        font-size: 26px;
+        margin-bottom: 15px;
+        color: #444;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Description Text */
+      .flip-card-front p,
+      .flip-card-back p {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 25px;
+        line-height: 1.6;
+      }
+
+      /* Input Fields */
+      .flip-card-front input,
+      .flip-card-back input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 14px;
+        background-color: #fff;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      .flip-card-front input:focus,
+      .flip-card-back input:focus {
+        border-color: #9370db;
+        box-shadow: 0 0 5px rgba(147, 112, 219, 0.5);
+      }
+
+      /* Buttons */
+      .login-popup-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #9370db;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .login-popup-btn:hover {
+        background-color: #6a5acd;
+        transform: translateY(-2px);
+      }
+
+      /* Forgot Password Link */
+      .forgot-password {
+        display: block;
+        margin-top: 10px;
+        font-size: 12px;
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .forgot-password:hover {
+        color: #9370db;
+        text-decoration: underline;
+      }
+
+      /* Register/Login Links */
+      .register-link {
+        color: #9370db;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .register-link:hover {
+        color: #6a5acd;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .title-section {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .title-section h1 {
+        font-size: 32px;
+        color: #6c5ce7;
+      }
+
+      .title-section p {
+        font-size: 20px;
+        color: #555;
+        line-height: 1.8;
+      }
+
+      .section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 0px;
+      }
+
+      .text-content {
+        flex: 1;
+      }
+
+      .text-content h2 {
+        font-size: 22px;
+        color: #6c5ce7;
+        margin-bottom: 10px;
+      }
+
+      .text-content p {
+        font-size: 16px;
+        color: #555;
+      }
+
+      .product-card {
+        /* background: linear-gradient(135deg, #f7f7f7, #eaeaea); */
+        border-radius: 10px;
+        background: #ede6f9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 10px; /* Reduced padding to make space for the image */
+        text-align: center;
+        flex: 1;
+        max-width: 320px;
+        margin: 0 auto;
+        height: auto;
+        max-height: 70%;
+      }
+
+      .product-card img {
+        max-width: 90%;
+        height: auto; /* Ensure the image maintains its aspect ratio */
+        border-radius: 10px;
+        margin-bottom: 10px; /* spacing below the image */
+      }
+
+      .product-card h3 {
+        font-size: 16px;
+        color: #6c5ce7;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .product-card p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .product-card button {
+        background-color: #6c5ce7;
+        color: #fff;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 13px;
+        cursor: pointer;
+        margin: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .product-card button:hover {
+        background-color: #4b32b4;
+      }
+
+      .text-content {
+        flex: 1;
+      }
+
+      .text-content h2 {
+        font-size: 28px; /* Increased heading size */
+        color: #6c5ce7;
+        font-weight: bold;
+        position: relative;
+        margin-bottom: 12px;
+        padding-left: 50px; /* Ensure spacing between number and card */
+      }
+
+      .text-content h2::before {
+        content: counter(step);
+        counter-increment: step;
+        position: absolute;
+        left: 0; /* Keep it aligned with the section */
+        top: 0;
+        font-size: 30px; /* Larger step numbers */
+        font-weight: bold;
+        color: #4b32b4; /* Stylish color for numbers */
+      }
+
+      /* Adjust section spacing */
+      .section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 50px; /* Added spacing between sections */
+        gap: 30px; /* Increased gap */
+        position: relative; /* Prevent overlap issues */
+      }
+
+      .text-content p {
+        font-size: 18px; /* Increased font size */
+        color: #555;
+        line-height: 1.8; /* Increased line height */
+      }
+
+      /* Reset counter for steps */
+      .container {
+        counter-reset: step;
+      }
+
+      /* Footer Section */
+      .footer {
+        background: linear-gradient(135deg, #e6e6fa, #d8bfd8, #e0bbe4);
+        padding: 40px 20px;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      /* Logo and Description */
+      .footer-logo-description {
+        max-width: 300px;
+      }
+
+      .footer-logo {
+        width: 150px;
+        margin-bottom: 15px;
+      }
+
+      .footer-logo-description p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      .footer-logo-description h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .social-icons a {
+        font-size: 20px;
+        color: #333;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #00a27f; /* Change this color to match your theme */
+      }
+
+      /* Footer Links */
+      .footer-links {
+        min-width: 150px;
+      }
+
+      .footer-links h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+
+      .footer-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #00a27f;
+      }
+
+      /* Contact Section */
+      .footer-contact h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .footer-contact p {
+        font-size: 14px;
+        color: #555;
+        margin: 5px 0;
+      }
+
+      .footer-contact a {
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-contact a:hover {
+        color: #00a27f;
+      }
+
+      /* Footer Bottom */
+      .footer-bottom {
+        text-align: center;
+        padding: 20px 0 10px;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+        color: #555;
+      }
+
+      .footer-bottom a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .footer-bottom a:hover {
+        color: #00a27f;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .navbar-container {
+          flex-direction: column;
+          padding: 10px;
+        }
+
+        .navbar-left,
+        .navbar-right {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .blog-content {
+          max-width: 100%;
+          padding: 15px;
+        }
+
+        .image-text-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .text-side {
+          text-align: center;
+        }
+
+        .product-card {
+          width: 100%;
+        }
+
+        .footer-container {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar-left a,
+        .icon-link {
+          font-size: 12px;
+        }
+
+        .blog-content {
+          padding: 10px;
+        }
+
+        .footer-container {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section {
+          flex-direction: column;
+        }
+
+        .text-content {
+          text-align: center;
+        }
+
+        .product-card {
+          max-width: 100%; /* Make cards full-width on smaller screens */
+        }
+      }
+
+      /* Sidebar styling */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Initially hidden */
+        width: 250px;
+        height: 100%;
+        background-color: #9370db; /* Same as navbar hover color */
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+        transition: left 0.3s ease; /* Smooth opening */
+        z-index: 1000; /* Ensure it appears above other elements */
+      }
+
+      .sidebar.open {
+        left: 0; /* Slide into view */
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .sidebar a:hover {
+        background-color: #805bb5; /* Slightly darker lavender */
+      }
+
+      /* Three Dashes menu styling */
+      .threedashesmenu {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 24px;
+        color: #333;
+        z-index: 1100;
+      }
+
+      /* Responsive adjustments */
+      @media screen and (max-width: 1110px) {
+        .navbar-container {
+          display: none; /* Hide the full navbar */
+        }
+
+        .threedashesmenu {
+          display: block; /* Show 3 dashes menu */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Logo Above Navbar -->
+    <div class="top-logo">
+      <img src="LOGO (2).png" alt="ESTA Logo" class="logo-image" />
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <!-- Left-aligned Links -->
+        <div class="navbar-left">
+          <a href="homepage.html">HOME</a>
+          <a href="makeup.html">MAKEUP</a>
+          <a href="skincare.html">SKINCARE</a>
+          <a href="haircare.html">HAIRCARE</a>
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle"
+              >BUNDLES <span class="dropdown-arrow"> ▼</span></a
+            >
+            <div class="dropdown-menu">
+              <a href="homepage.html#skincarebundlesection">Skincare</a>
+              <a href="homepage.html#makeupbundlesection">Makeup</a>
+            </div>
+          </div>
+          <a href="homepage.html#blogsSection">BLOGS</a>
+        </div>
+
+        <!-- Right-aligned Icons -->
+        <div class="navbar-right">
+          <a href="#" class="icon-link" onclick="openLoginPopup()">👤</a>
+          <a href="#" class="icon-link" onclick="openCartPanel()">🛒</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 3 dashes Menu -->
+    <div class="threedashesmenu" onclick="toggleSidebar()">☰</div>
+
+    <!-- Sidebar Navigation -->
+    <div id="sidebar" class="sidebar">
+      <a href="homepage.html">HOME</a>
+      <a href="makeup.html">MAKEUP</a>
+      <a href="skincare.html">SKINCARE</a>
+      <a href="haircare.html">HAIRCARE</a>
+      <a href="#blogs-section">BLOGS</a>
+    </div>
+
+    <!-- Login Popup -->
+    <div id="loginPopup" class="login-popup">
+      <div class="flip-card">
+        <!-- Front Side: Login Form -->
+        <div class="flip-card-front">
+          <span class="close-login-btn" onclick="closeLoginPopup()">✖</span>
+          <h2>LOGIN</h2>
+          <p>Please enter your e-mail and password:</p>
+          <form>
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit" class="login-popup-btn">LOGIN</button>
+          </form>
+          <a href="#" class="forgot-password">Forgot your password?</a>
+          <p>
+            New customer?
+            <a href="#" class="register-link" onclick="flipToRegister()"
+              >Register</a
+            >
+          </p>
+        </div>
+
+        <!-- Back Side: Register Form -->
+        <div class="flip-card-back">
+          <span class="close-login-btn" onclick="closeLoginPopup()">✖</span>
+          <h2>REGISTER</h2>
+          <p>Please fill in the fields below:</p>
+          <form>
+            <input type="text" placeholder="First Name" required />
+            <input type="text" placeholder="Last Name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit" class="login-popup-btn">CREATE</button>
+          </form>
+          <p>
+            Already a member?
+            <a href="#" class="register-link" onclick="flipToLogin()">Login</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Side Panel -->
+    <div id="cartPanel" class="cart-panel">
+      <div class="cart-panel-content">
+        <div class="cart-header">
+          <h2>Your Cart</h2>
+          <span class="close-cart-btn" onclick="closeCartPanel()">✖</span>
+        </div>
+        <p class="cart-status">Your cart is currently empty</p>
+        <hr class="cart-divider" />
+      </div>
+      <div class="cart-footer">
+        <!-- Subtotal -->
+        <div class="cart-subtotal">
+          <p>Subtotal</p>
+          <p>PKR 0</p>
+        </div>
+        <!-- Checkout Button -->
+        <!-- <button class="checkout-btn">Proceed to Checkout</button> -->
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <div class="container">
+      <div class="title-section">
+        <h1>YOUR WINTER SKINCARE ESSENTIALS FOR THAT COVETED DEWY LOOK</h1>
+        <p>
+          Winter doesn’t just bring cozy sweaters and hot cocoa—it also brings a
+          relentless challenge for your skin. The frosty winds, dry indoor
+          heating, and low humidity team up to strip away your skin’s natural
+          glow, leaving it feeling dry and looking lackluster. But with ESTA
+          Skincare, you don’t have to settle for dull, flaky skin this season.
+          At ESTA, we believe winter should be a time for your skin to thrive,
+          not just survive. Our expertly crafted formulas are designed to combat
+          the harsh effects of the cold, ensuring your skin stays hydrated,
+          radiant, and protected. Whether you’re braving the chill outside or
+          enjoying cozy moments indoors, ESTA Skincare is your ultimate ally for
+          maintaining that healthy, dewy glow all season long. This winter, let
+          your skincare work as hard as you do—because with ESTA, your skin
+          deserves nothing less than the best.
+        </p>
+      </div>
+      <!-- Section 1 -->
+      <div class="section">
+        <div class="product-card">
+          <img src="31.png" alt="Hydrating Cleanser" />
+          <h3>Hydrating Gel Cleanser</h3>
+          <!-- <p>Keep your skin hydrated while cleansing with our soothing gel-based formula.</p> -->
+          <button onclick="showmessage()">Add to Cart</button>
+          <button onclick="showbuynowmessage()">Buy Now</button>
+        </div>
+        <div class="text-content">
+          <h2>Start with a Gentle Hydrating Cleanser</h2>
+          <p>
+            Your winter skincare routine starts with a gentle cleanser, and
+            ESTA’s hydrating solutions make it easier than ever to clean your
+            skin while preserving its moisture. Harsh cleansers can strip your
+            skin, leaving it vulnerable to the season’s challenges. Instead, opt
+            for a cream-based or gel cleanser packed with skin-loving
+            ingredients like glycerin and hyaluronic acid to gently remove
+            impurities while maintaining your skin’s protective barrier. With
+            ESTA, your cleansing step isn’t just effective—it’s a soothing
+            moment of care that sets the stage for healthier, hydrated skin all
+            winter long.
+          </p>
+        </div>
+      </div>
+      <!-- Section 2 -->
+      <div class="section">
+        <div class="text-content">
+          <h2>Layer Hydration with Serums</h2>
+          <p>
+            Hydration is the heart of winter skincare, and ESTA’s expertly
+            crafted serums are your go-to solution for locking in moisture. A
+            lightweight yet powerful serum is the perfect way to deliver
+            concentrated hydration where your skin needs it most. Ingredients
+            like hyaluronic acid attract moisture, while Vitamin E provides
+            essential protection from environmental stressors. With ESTA’s
+            hydrating serums, you’re not just adding a layer of care—you’re
+            creating the foundation for soft, dewy skin that feels refreshed and
+            rejuvenated, even on the harshest winter days.
+          </p>
+        </div>
+        <div class="product-card">
+          <img src="21.png" alt="Hydration Serum" />
+          <h3>Deep Hydration Serum</h3>
+          <!-- <p>Lock in moisture with our lightweight serum infused with Hyaluronic Acid and Vitamin E.</p> -->
+          <button onclick="showmessage()">Add to Cart</button>
+          <button onclick="showbuynowmessage()">Buy Now</button>
+        </div>
+      </div>
+      <!-- Section 3 -->
+      <div class="section">
+        <div class="product-card">
+          <img src="20.png" alt="Rich Moisturizer" />
+          <h3>Hydro Boost Moisturizer</h3>
+          <!-- <p>Protect your skin with our ultra-rich hydrating water-based moisturizer for long-lasting hydration.</p> -->
+          <button onclick="showmessage()">Add to Cart</button>
+          <button onclick="showbuynowmessage()">Buy Now</button>
+        </div>
+        <div class="text-content">
+          <h2>Seal It In with a Rich Moisturizer</h2>
+          <p>
+            A moisturizer isn’t just a final step—it’s the cornerstone of your
+            winter skincare routine. ESTA’s water-based moisturizers are crafted
+            to deliver deep hydration without feeling heavy or greasy, making
+            them perfect for all skin types. Infused with hydrating agents like
+            hyaluronic acid and lightweight emollients, our formulas provide an
+            instant burst of moisture while locking it in throughout the day.
+            Winter dryness doesn’t stand a chance with ESTA on your side.
+            Experience soft, plump, and refreshed skin that stays hydrated and
+            radiant, no matter how cold it gets outside.
+          </p>
+        </div>
+      </div>
+      <!-- Section 4 -->
+      <div class="section">
+        <div class="text-content">
+          <h2>Nourish Your Lips with Lip Oil</h2>
+          <p>
+            Your lips deserve just as much care as your skin, and ESTA’s
+            nourishing lip oils provide the perfect solution. The cold air and
+            dry atmosphere can leave your lips cracked and uncomfortable, but
+            our lip oils combine hydration and repair in one luxurious formula.
+            Enriched with jojoba oil and Vitamin E, they deeply hydrate and
+            heal, leaving your lips soft, smooth, and beautifully glossy. With
+            ESTA, you’re not just caring for your lips—you’re adding a touch of
+            elegance to your winter beauty routine.
+          </p>
+        </div>
+        <div class="product-card">
+          <img src="5.png" alt="Lip Oil" />
+          <h3>Hydrating Lip Oil</h3>
+          <!-- <p>Keep your lips nourished and soft with our deeply moisturizing lip oil, perfect for winter weather.</p> -->
+          <button onclick="showmessage()">Add to Cart</button>
+          <button onclick="showbuynowmessage()">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Logo and Description -->
+        <div class="footer-logo-description">
+          <img src="LOGO (2).png" alt="ESTA Logo" class="footer-logo" />
+          <p>
+            ESTA IS A SCIENTIFIC, RESULTS-BASED SKINCARE COMPANY PROVIDING SAFE
+            AND EFFECTIVE SKINCARE SOLUTIONS.
+          </p>
+
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links">
+          <h4>ABOUT</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>SHOP</h4>
+          <ul>
+            <li><a href="homepage.html">Shop All</a></li>
+            <li><a href="makeup.html">Makeup</a></li>
+            <li><a href="skincare.html">Skincare</a></li>
+            <li><a href="haircare.html">Haircare</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-contact">
+          <h4>GET IN TOUCH</h4>
+          <p>T: +92 326 6016012</p>
+          <p>E: <a href="mailto:info@ESTA.com">info@ESTA.com</a></p>
+          <p>Formulated and Manufactured by ESTA.</p>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        <p>COPYRIGHT © 2024 <a href="homepage.html">ESTA</a> | ALL RIGHTS RESERVED</p>
+      </div>
+    </footer>
+  </body>
+
+  <!-- javascript -->
+  <script>
+    // Function to open the cart panel
+    function openCartPanel() {
+      const cartPanel = document.getElementById("cartPanel");
+      cartPanel.style.width = "350px"; // Open the cart panel
+    }
+
+    // Function to close the cart panel
+    function closeCartPanel() {
+      const cartPanel = document.getElementById("cartPanel");
+      cartPanel.style.width = "0"; // Close the cart panel
+    }
+
+    // Open Login Popup
+    function openLoginPopup() {
+      document.getElementById("loginPopup").style.display = "flex";
+    }
+
+    // Close Login Popup
+    function closeLoginPopup() {
+      document.getElementById("loginPopup").style.display = "none";
+    }
+
+    // Flip to Register Form
+    function flipToRegister() {
+      document.querySelector(".flip-card").classList.add("flipped");
+    }
+
+    // Flip to Login Form
+    function flipToLogin() {
+      document.querySelector(".flip-card").classList.remove("flipped");
+    }
+
+    // Function to handle Add to Cart button click
+    function showmessage() {
+      alert("Item Added To The Cart Successfully.");
+    }
+
+    //side bar function
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("open");
+    }
+
+    // Function to handle Buy Now button click
+    function showbuynowmessage() {
+      alert("Order Placed.");
+    }
+  </script>
+</html>

@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skincare</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset margins and paddings */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Ensure the body and html occupy full height and prevent horizontal overflow */
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        background-color: #f0f5f5;
+      }
+
+      /* Full width container */
+      .container {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .top-logo {
+        text-align: center;
+        background: linear-gradient(135deg, #e6e6fa, #d8bfd8, #e0bbe4);
+        padding: 0px;
+      }
+
+      .top-logo .logo-image {
+        max-width: 120px;
+        height: auto;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+
+      /* Overall Navbar Styling */
+      .navbar {
+        background: linear-gradient(135deg, #f7f7f7, #eaeaea, #dddddd, #d0d0d0);
+        /* background: linear-gradient(135deg, #E6E6FA, #D8BFD8, #E0BBE4); */
+        padding: 15px 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Left-aligned Links */
+      .navbar-left {
+        padding-left: 180px;
+        justify-content: center;
+        display: flex;
+        gap: 50px; /* Adjust spacing between links */
+      }
+
+      .navbar-left a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 5px 10px; /* Add padding for larger clickable area */
+        transition: color 0.3s, background-color 0.3s; /* Smooth transition on hover */
+        border-radius: 5px;
+        display: inline-flex;
+      }
+
+      .navbar-left a:hover {
+        color: #9370db;
+      }
+
+      /* Dropdown Styling */
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-toggle {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        color: #333;
+        font-weight: 600;
+        padding: 5px 10px;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 120%;
+        left: 0;
+        background-color: #dfd3d3;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        padding: 10px 0;
+        min-width: 200px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+      }
+
+      .dropdown-menu a {
+        display: block;
+        padding: 12px 20px;
+        color: #333;
+        text-decoration: none;
+        font-size: 15px;
+        transition: background-color 0.3s;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: #f0f7f5;
+        /* color: #00a27f; */
+        color: #b19cd9; /* Soft lavender */
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Right-aligned Icons */
+      .navbar-right {
+        display: flex;
+        margin-left: auto; /* Pushes icons to the right */
+        gap: 20px;
+      }
+
+      .icon-link {
+        font-size: 20px;
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        transition: color 0.3s, background-color 0.3s;
+        border-radius: 5px;
+      }
+
+      .icon-link:hover {
+        color: #ffffff;
+        /* background-color: #00a27f; */
+        color: #b19cd9; /* Soft lavender */
+      }
+      /* Products Section */
+      .all-products {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .products-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Products Section */
+      .all-products {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .products-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .product {
+        background: #ede6f9;
+        width: 100%;
+        border: 1px solid #f0f5f5;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        position: relative; /* For hover effects */
+        margin-bottom: 30px;
+      }
+
+      .product:hover {
+        transform: translateY(-5px);
+      }
+
+      .product img {
+        width: 100%;
+        max-height: 330px; /* Increased size */
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease; /* Smooth image zoom effect */
+      }
+
+      .product:hover img {
+        transform: scale(1.1); /* Slight zoom on hover */
+      }
+
+      .product-title {
+        font-size: 16px;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      .product-price {
+        color: red;
+        font-weight: bold;
+        margin-top: 5px;
+      }
+
+      .product-old-price {
+        color: #777;
+        text-decoration: line-through;
+        font-size: 14px;
+      }
+
+      /* Add to Cart Button */
+      .add-to-cart-btn {
+        position: absolute;
+        bottom: -40px; /* Hidden by default */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #9370db;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 14px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        opacity: 0; /* Hidden by default */
+        transition: all 0.3s ease; /* Smooth slide and fade-in effect */
+      }
+
+      .product:hover .add-to-cart-btn {
+        bottom: 10px; /* Slide up on hover */
+        opacity: 1; /* Fade in */
+      }
+
+      .add-to-cart-btn:hover {
+        background-color: #6a5acd;
+        transform: translateX(-50%) scale(1.1); /* Slight zoom on hover */
+      }
+
+      /* Cart Panel Styling */
+      .cart-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 0; /* Hidden by default */
+        height: 100%;
+        background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+        overflow-x: hidden;
+        transition: width 0.3s ease; /* Smooth transition for sliding effect */
+        z-index: 1000; /* Ensure it appears above other elements */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Footer stays at the bottom */
+      }
+
+      /* Content inside the cart */
+      .cart-panel-content {
+        padding: 20px;
+        font-family: "Montserrat", sans-serif;
+        color: #333;
+        flex-grow: 1; /* Expand to take up available space */
+        overflow-y: auto; /* Enable scrolling for long content */
+      }
+
+      /* Header */
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .cart-header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #5e4787; /* Soft lavender */
+        margin: 0;
+      }
+
+      .close-cart-btn {
+        font-size: 20px;
+        cursor: pointer;
+        color: #bbb;
+        transition: color 0.3s ease;
+      }
+
+      .close-cart-btn:hover {
+        color: #333;
+      }
+
+      /* Cart Status */
+      .cart-status {
+        text-align: center;
+        font-size: 16px;
+        color: #777;
+        margin: 20px 0;
+      }
+
+      /* Footer */
+      .cart-footer {
+        padding: 20px 30px; /* Adjust padding for proper spacing */
+        background: #ffffff;
+        box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.05); /* Add shadow above the footer */
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Horizontally center items */
+        justify-content: center; /* Vertically center items */
+        text-align: center; /* Centers text if needed */
+      }
+
+      /* Checkout Button */
+      .checkout-btn {
+        width: 80%; /* Adjust width for better appearance */
+        max-width: 300px; /* Optional: Set a max width for the button */
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(
+          to right,
+          #b19cd9,
+          #9370db
+        ); /* Button gradient */
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(145, 112, 219, 0.2);
+        margin-top: 10px; /* Space above the button */
+        margin-left: 35px;
+        margin-bottom: 10px;
+      }
+
+      .checkout-btn:hover {
+        background: linear-gradient(to right, #9370db, #b19cd9);
+        transform: translateY(-2px); /* Subtle hover animation */
+        box-shadow: 0 6px 15px rgba(145, 112, 219, 0.3);
+      }
+
+      /* General Popup Styling */
+      .login-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Flip Card Structure */
+      .flip-card {
+        width: 400px;
+        height: 500px;
+        perspective: 1000px; /* Adds 3D perspective */
+        position: relative;
+      }
+
+      /* Flip Card Front and Back */
+      .flip-card-front,
+      .flip-card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden; /* Hides the back side by default */
+        transition: transform 0.6s ease-in-out; /* Smooth flipping animation */
+        background: linear-gradient(
+          135deg,
+          #f1f8fb,
+          #f3ebfb,
+          #e7f1f8
+        ); /* Soft lavender gradient */
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        padding: 30px;
+        text-align: center;
+      }
+
+      /* Front Side: Login Form */
+      .flip-card-front {
+        transform: rotateY(0); /* Default: visible side */
+      }
+
+      /* Back Side: Register Form */
+      .flip-card-back {
+        transform: rotateY(180deg); /* Hidden by default */
+      }
+
+      /* Flipped State */
+      .flip-card.flipped .flip-card-front {
+        transform: rotateY(-180deg); /* Rotate out of view */
+      }
+
+      .flip-card.flipped .flip-card-back {
+        transform: rotateY(0); /* Rotate into view */
+      }
+
+      /* Close Button */
+      .close-login-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        color: #666;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+      }
+
+      .close-login-btn:hover {
+        background-color: #ffebe5;
+        color: #d9534f;
+        border-color: #d9534f;
+      }
+
+      /* Headings */
+      .flip-card-front h2,
+      .flip-card-back h2 {
+        font-size: 26px;
+        margin-bottom: 15px;
+        color: #444;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Description Text */
+      .flip-card-front p,
+      .flip-card-back p {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 25px;
+        line-height: 1.6;
+      }
+
+      /* Input Fields */
+      .flip-card-front input,
+      .flip-card-back input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 14px;
+        background-color: #fff;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      .flip-card-front input:focus,
+      .flip-card-back input:focus {
+        border-color: #9370db;
+        box-shadow: 0 0 5px rgba(147, 112, 219, 0.5);
+      }
+
+      /* Buttons */
+      .login-popup-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #9370db;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .login-popup-btn:hover {
+        background-color: #6a5acd;
+        transform: translateY(-2px);
+      }
+
+      /* Forgot Password Link */
+      .forgot-password {
+        display: block;
+        margin-top: 10px;
+        font-size: 12px;
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .forgot-password:hover {
+        color: #9370db;
+        text-decoration: underline;
+      }
+
+      /* Register/Login Links */
+      .register-link {
+        color: #9370db;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .register-link:hover {
+        color: #6a5acd;
+      }
+
+      /* Footer Section */
+      .footer {
+        background: linear-gradient(135deg, #e6e6fa, #d8bfd8, #e0bbe4);
+        padding: 40px 20px;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      /* Logo and Description */
+      .footer-logo-description {
+        max-width: 300px;
+      }
+
+      .footer-logo {
+        width: 150px;
+        margin-bottom: 15px;
+      }
+
+      .footer-logo-description p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      .footer-logo-description h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .social-icons a {
+        font-size: 20px;
+        color: #333;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        /* color: #00a27f;  */
+        color: #5e4787;
+      }
+
+      /* Footer Links */
+      .footer-links {
+        min-width: 150px;
+      }
+
+      .footer-links h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+
+      .footer-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        /* color: #00a27f; */
+        color: #5e4787;
+      }
+
+      /* Contact Section */
+      .footer-contact h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .footer-contact p {
+        font-size: 14px;
+        color: #555;
+        margin: 5px 0;
+      }
+
+      .footer-contact a {
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-contact a:hover {
+        /* color: #00a27f; */
+        color: #5e4787;
+      }
+
+      /* Footer Bottom */
+      .footer-bottom {
+        text-align: center;
+        padding: 20px 0 10px;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+        color: #555;
+      }
+
+      .footer-bottom a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .footer-bottom a:hover {
+        /* color: #00a27f; */
+        color: #5e4787;
+      }
+
+      /* Sidebar styling */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Initially hidden */
+        width: 250px;
+        height: 100%;
+        background-color: #9370db; /* Same as navbar hover color */
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+        transition: left 0.3s ease; /* Smooth opening */
+        z-index: 1000; /* Ensure it appears above other elements */
+      }
+
+      .sidebar.open {
+        left: 0; /* Slide into view */
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .sidebar a:hover {
+        background-color: #805bb5; /* Slightly darker lavender */
+      }
+
+      /* Three Dashes menu styling */
+      .threedashesmenu {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 24px;
+        color: #333;
+        z-index: 1100;
+      }
+
+      /* Responsive adjustments */
+      @media screen and (max-width: 1110px) {
+        .navbar-container {
+          display: none; /* Hide the full navbar */
+        }
+
+        .threedashesmenu {
+          display: block; /* Show 3 dashes menu */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Logo Above Navbar -->
+    <div class="top-logo">
+      <img src="LOGO (2).png" alt="Brand Logo" class="logo-image" />
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <!-- Left-aligned Links -->
+        <div class="navbar-left">
+          <a href="homepage.html">HOME</a>
+          <a href="makeup.html">MAKEUP</a>
+          <a href="skincare.html">SKINCARE</a>
+          <a href="haircare.html">HAIRCARE</a>
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle"
+              >BUNDLES <span class="dropdown-arrow"> ▼</span></a
+            >
+            <div class="dropdown-menu">
+              <a href="homepage.html#skincarebundlesection">Skincare</a>
+              <a href="homepage.html#makeupbundlesection">Makeup</a>
+            </div>
+          </div>
+          <a href="homepage.html#blogsSection">BLOGS</a>
+        </div>
+
+        <!-- Right-aligned Icons -->
+        <div class="navbar-right">
+          <a href="#" class="icon-link" onclick="openLoginPopup()">👤</a>
+          <a href="#" class="icon-link" onclick="openCartPanel()">🛒</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 3 dashes Menu -->
+    <div class="threedashesmenu" onclick="toggleSidebar()">☰</div>
+
+    <!-- Sidebar Navigation -->
+    <div id="sidebar" class="sidebar">
+      <a href="homepage.html">HOME</a>
+      <a href="makeup.html">MAKEUP</a>
+      <a href="skincare.html">SKINCARE</a>
+      <a href="haircare.html">HAIRCARE</a>
+      <a href="#blogs-section">BLOGS</a>
+    </div>
+
+    <!-- Login Popup -->
+    <div id="loginPopup" class="login-popup">
+      <div class="flip-card">
+        <!-- Front Side: Login Form -->
+        <div class="flip-card-front">
+          <span class="close-login-btn" onclick="closeLoginPopup()">✖</span>
+          <h2>LOGIN</h2>
+          <p>Please enter your e-mail and password:</p>
+          <form>
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit" class="login-popup-btn">LOGIN</button>
+          </form>
+          <a href="#" class="forgot-password">Forgot your password?</a>
+          <p>
+            New customer?
+            <a href="#" class="register-link" onclick="flipToRegister()"
+              >Register</a
+            >
+          </p>
+        </div>
+
+        <!-- Back Side: Register Form -->
+        <div class="flip-card-back">
+          <span class="close-login-btn" onclick="closeLoginPopup()">✖</span>
+          <h2>REGISTER</h2>
+          <p>Please fill in the fields below:</p>
+          <form>
+            <input type="text" placeholder="First Name" required />
+            <input type="text" placeholder="Last Name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit" class="login-popup-btn">SIGN UP</button>
+          </form>
+          <p>
+            Already a member?
+            <a href="#" class="register-link" onclick="flipToLogin()">Login</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Side Panel -->
+    <div id="cartPanel" class="cart-panel">
+      <div class="cart-panel-content">
+        <div class="cart-header">
+          <h2>Your Cart</h2>
+          <span class="close-cart-btn" onclick="closeCartPanel()">✖</span>
+        </div>
+        <p class="cart-status">Your cart is currently empty</p>
+        <hr class="cart-divider" />
+      </div>
+      <div class="cart-footer">
+        <!-- Subtotal -->
+        <div class="cart-subtotal">
+          <p>Subtotal</p>
+          <p>PKR 0</p>
+        </div>
+        <!-- Checkout Button -->
+        <!-- <button class="checkout-btn">Proceed to Checkout</button> -->
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <!-- Products Section -->
+    <section class="all-products">
+      <h2 style="text-align: center; margin-bottom: 30px; margin-top: 30px">
+        Skincare
+      </h2>
+      <div class="products-container">
+        <div class="category-grid">
+          <div class="product">
+            <img src="3.png" alt="Product 1" />
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+            <div class="product-title">Aloe Soothing Sun Cream SPF 50+++</div>
+            <div class="product-price">Rs.1,596</div>
+            <div class="product-old-price">Rs.2,045</div>
+          </div>
+          <div class="product">
+            <img src="4.png" alt="Product 2" />
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+            <div class="product-title">
+              Double Action Serum – Vit C 10% + B3
+            </div>
+            <div class="product-price">Rs.1,790</div>
+            <div class="product-old-price">Rs.2,289</div>
+          </div>
+          <div class="product">
+            <img src="20.png" alt="Product 3" />
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+            <div class="product-title">Hydro Boost Moisturizer</div>
+            <div class="product-price">Rs.1,907</div>
+            <div class="product-old-price">Rs.2,449</div>
+          </div>
+        </div>
+        <button class="add-to-cart-btn" onclick="showmessage()">
+          Add to Cart
+        </button>
+      </div>
+      <div class="products-container">
+        <div class="category-grid">
+          <div class="product">
+            <img src="29.png" alt="Sun Of A Beach Sunscreen SPF 40++" />
+            <div class="product-title">PHA + BHA Pore Tightening Toner</div>
+            <div class="product-price">Rs.1,596</div>
+            <div class="product-old-price">Rs.2,045</div>
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+          </div>
+          <div class="product">
+            <img src="23.png" alt="Double Action Serum – Vit C 10% + B3" />
+            <div class="product-title">Niacinamide Serum</div>
+            <div class="product-price">Rs.1,790</div>
+            <div class="product-old-price">Rs.2,289</div>
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+          </div>
+          <div class="product">
+            <img src="21.png" alt="B3 Hydra Glow Serum – Niacinamide" />
+            <div class="product-title">Deep Hydration Serum</div>
+            <div class="product-price">Rs.1,907</div>
+            <div class="product-old-price">Rs.2,449</div>
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="products-container">
+        <div class="category-grid">
+          <div class="product">
+            <img src="27.png" alt="Sun Of A Beach Sunscreen SPF 40++" />
+            <div class="product-title">Plumping Glow Cream</div>
+            <div class="product-price">Rs.1,596</div>
+            <div class="product-old-price">Rs.2,045</div>
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+          </div>
+          <div class="product">
+            <img src="28.png" alt="Double Action Serum – Vit C 10% + B3" />
+            <div class="product-title">Super Power Mask EX</div>
+            <div class="product-price">Rs.656</div>
+            <div class="product-old-price">Rs.1,000</div>
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+          </div>
+          <div class="product">
+            <img src="31.png" alt="B3 Hydra Glow Serum – Niacinamide" />
+            <div class="product-title">Hydrating Gel Cleanser</div>
+            <div class="product-price">Rs.1,907</div>
+            <div class="product-old-price">Rs.2,449</div>
+            <button class="add-to-cart-btn" onclick="showmessage()">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Logo and Description -->
+        <div class="footer-logo-description">
+          <img src="LOGO (2).png" alt="ESTA Logo" class="footer-logo" />
+          <p>
+            ESTA IS A SCIENTIFIC, RESULTS-BASED SKINCARE COMPANY PROVIDING SAFE
+            AND EFFECTIVE SKINCARE SOLUTIONS.
+          </p>
+
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links">
+          <h4>ABOUT</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>SHOP</h4>
+          <ul>
+            <li><a href="homepage.html">Shop All</a></li>
+            <li><a href="makeup.html">Makeup</a></li>
+            <li><a href="skincare.html">Skincare</a></li>
+            <li><a href="haircare.html">Haircare</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-contact">
+          <h4>GET IN TOUCH</h4>
+          <p>T: +92 326 6016012</p>
+          <p>E: <a href="mailto:info@ESTA.com">info@ESTA.com</a></p>
+          <p>Formulated and Manufactured by ESTA.</p>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        <p>COPYRIGHT © 2024 <a href="homepage.html">ESTA</a> | ALL RIGHTS RESERVED</p>
+      </div>
+    </footer>
+  </body>
+
+  <!-- javascript -->
+  <script>
+    let slideIndex = 0;
+    showSlides(slideIndex);
+
+    function changeSlide(n) {
+      showSlides((slideIndex += n));
+    }
+
+    function showSlides(n) {
+      let slides = document.getElementsByClassName("slide");
+      if (n >= slides.length) {
+        slideIndex = 0;
+      }
+      if (n < 0) {
+        slideIndex = slides.length - 1;
+      }
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+
+    setInterval(() => {
+      changeSlide(1);
+    }, 3000);
+
+    // Function to open the cart panel
+    function openCartPanel() {
+      const cartPanel = document.getElementById("cartPanel");
+      cartPanel.style.width = "350px"; // Open the cart panel
+    }
+
+    // Function to close the cart panel
+    function closeCartPanel() {
+      const cartPanel = document.getElementById("cartPanel");
+      cartPanel.style.width = "0"; // Close the cart panel
+    }
+
+    // Open Login Popup
+    function openLoginPopup() {
+      document.getElementById("loginPopup").style.display = "flex";
+    }
+
+    // Close Login Popup
+    function closeLoginPopup() {
+      document.getElementById("loginPopup").style.display = "none";
+    }
+
+    // Flip to Register Form
+    function flipToRegister() {
+      document.querySelector(".flip-card").classList.add("flipped");
+    }
+
+    // Flip to Login Form
+    function flipToLogin() {
+      document.querySelector(".flip-card").classList.remove("flipped");
+    }
+
+    //side bar function
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("open");
+    }
+
+    // Function to handle Add to Cart button click
+    function showmessage() {
+      alert("Item Added To The Cart Successfully.");
+    }
+  </script>
+</html>

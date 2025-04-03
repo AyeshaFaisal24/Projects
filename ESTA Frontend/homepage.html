@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTA Cosmetics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+ /* Remove space around the screen */
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+    }
+
+    html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background-color: #f0f5f5; 
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+/* Full width container */
+     .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+/* Top Logo Style */
+     .top-logo {
+            text-align: center;
+            background: linear-gradient(135deg, #E6E6FA, #D8BFD8, #E0BBE4);
+            padding: 10px 0;
+        }
+
+        .top-logo .logo-image {
+            max-width: 150px;
+            height: auto;
+        }
+
+/* Overall Navbar Styling */
+    .navbar {
+        background: linear-gradient(135deg, #f7f7f7, #eaeaea, #dddddd, #d0d0d0);
+        /* background: linear-gradient(135deg, #E6E6FA, #D8BFD8, #E0BBE4); */
+        padding: 15px 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Left-aligned Links */
+    .navbar-left {
+        padding-left: 180px;
+        justify-content: center;
+        display: flex;
+        gap: 50px; /* Adjust spacing between links */
+    }
+
+    .navbar-left a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 5px 10px; /* Add padding for larger clickable area */
+        transition: color 0.3s, background-color 0.3s; /* Smooth transition on hover */
+        border-radius: 5px;
+        display: inline-flex;
+    }
+
+    .navbar-left a:hover {
+        color: #9370db;
+    }
+
+    /* Dropdown Styling */
+
+    .dropdown {
+  position: relative; /* Keeps the dropdown toggle and menu related to each other */
+}
+
+.dropdown-toggle {
+  cursor: pointer; /* Makes the cursor a hand when hovering */
+  display: inline-flex; /* Keeps "BUNDLES ▼" inline with flexibility */
+  align-items: center; /* Vertically centers the text and arrow ▼ */
+  color: #333; /* Dark gray color */
+  font-weight: 600; /* Makes the text bold */
+  padding: 5px 10px; /* Adds space inside the clickable area */
+}
+
+.dropdown-menu {
+  display: none; /* Initially hides the dropdown menu */
+  position: absolute; /* Positions the menu relative to its parent (.dropdown) */
+  top: 120%; /* Places the menu slightly below the "BUNDLES" link */
+  left: 0; /* Aligns the menu to the left edge of the dropdown */
+  background-color: #dfd3d3; /* Light gray background for the dropdown */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Adds a shadow for depth */
+  border-radius: 10px; /* Rounds the corners */
+  padding: 10px 0; /* Adds padding inside the menu */
+  min-width: 200px; /* Ensures the menu is at least 200px wide */
+  opacity: 0; /* Makes the menu invisible initially */
+  transform: translateY(10px); /* Moves the menu slightly downward initially */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smoothly fades and moves the menu when it appears */
+  z-index: 1000; /* Ensures the menu appears above other elements */
+}
+
+.dropdown-menu a {
+  display: block; /* Makes each link in the menu take up its own row */
+  padding: 12px 20px; /* Adds space inside each link */
+  color: #333; /* Dark gray text color */
+  text-decoration: none; /* Removes underline from links */
+  font-size: 15px; /* Sets the text size */
+  transition: background-color 0.3s; /* Smoothly changes the background color when hovering */
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f7f5; /* Changes the background to a lighter color when hovered */
+  color: #b19cd9; /* Changes the text color to lavender */
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Makes the menu visible when you hover over the dropdown */
+  opacity: 1; /* Fully shows the menu */
+  transform: translateY(0); /* Moves the menu into place */
+}
+
+    /* Right-aligned Icons */
+    .navbar-right {
+        display: flex;
+        margin-left: auto; /* Pushes icons to the right */
+        gap: 20px;
+    }
+
+    .icon-link {
+        font-size: 20px;
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        transition: color 0.3s, background-color 0.3s;
+        border-radius: 5px;
+    }
+
+    .icon-link:hover {
+        color: #ffffff;
+        /* background-color: #00a27f; */
+        color: #b19cd9; /* Soft lavender */
+
+    }
+/* Cart Panel Styling */
+    .cart-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 0; /* Hidden by default */
+        height: 100%;
+        background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+        overflow-x: hidden;
+        transition: width 0.3s ease; /* Smooth transition for sliding effect */
+        z-index: 1000; /* Ensure it appears above other elements */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Footer stays at the bottom */
+    }
+
+    /* Content inside the cart */
+    .cart-panel-content {
+        padding: 20px;
+        font-family: 'Montserrat', sans-serif;
+        color: #333;
+        flex-grow: 1; /* Expand to take up available space */
+        overflow-y: auto; /* Enable scrolling for long content */
+    }
+
+    /* Header */
+    .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .cart-header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #5e4787; /* Soft lavender */
+        margin: 0;
+    }
+
+    .close-cart-btn {
+        font-size: 20px;
+        cursor: pointer;
+        color: #bbb;
+        transition: color 0.3s ease;
+    }
+
+    .close-cart-btn:hover {
+        color: #333;
+    }
+
+    /* Cart Status */
+    .cart-status {
+        text-align: center;
+        font-size: 16px;
+        color: #777;
+        margin: 20px 0;
+    }
+
+    /* Footer */
+    .cart-footer {
+        padding: 20px 30px; /* Adjust padding for proper spacing */
+        background: #ffffff;
+        box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.05); /* Add shadow above the footer */
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Horizontally center items */
+        justify-content: center; /* Vertically center items */
+        text-align: center; /* Centers text if needed */
+    }
+
+    /* Checkout Button */
+    .checkout-btn {
+        width: 80%; /* Adjust width for better appearance */
+        max-width: 300px; /* Optional: Set a max width for the button */
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(to right, #b19cd9, #9370db); /* Button gradient */
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(145, 112, 219, 0.2);
+        margin-top: 10px; /* Space above the button */
+        margin-left: 35px;
+        margin-bottom: 10px;
+    }
+
+    .checkout-btn:hover {
+        background: linear-gradient(to right, #9370db, #b19cd9); /* Slightly darker hover effect */
+        transform: translateY(-2px); /* Subtle hover animation */
+        box-shadow: 0 6px 15px rgba(145, 112, 219, 0.3);
+    }
+
+
+/* General Popup Styling */
+    .login-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+/* Flip Card Structure */
+    .flip-card {
+        width: 400px;
+        height: 500px;
+        perspective: 1000px; /* Adds 3D perspective */
+        position: relative;
+    }
+
+    /* Flip Card Front and Back */
+    .flip-card-front,
+    .flip-card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden; /* Hides the back side by default */
+        transition: transform 0.6s ease-in-out; /* Smooth flipping animation */
+        background: linear-gradient(135deg, #f1f8fb, #f3ebfb, #e7f1f8); /* Soft lavender gradient */
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        padding: 30px;
+        text-align: center;
+    }
+
+    /* Front Side: Login Form */
+    .flip-card-front {
+        transform: rotateY(0); /* Default: visible side */
+    }
+
+    /* Back Side: Register Form */
+    .flip-card-back {
+        transform: rotateY(180deg); /* Hidden by default */
+    }
+
+    /* Flipped State */
+    .flip-card.flipped .flip-card-front {
+        transform: rotateY(-180deg); /* Rotate out of view */
+    }
+
+    .flip-card.flipped .flip-card-back {
+        transform: rotateY(0); /* Rotate into view */
+    }
+
+    /* Close Button */
+    .close-login-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        color: #666;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+    }
+
+    .close-login-btn:hover {
+        background-color: #ffebe5;
+        color: #d9534f;
+        border-color: #d9534f;
+    }
+
+    /* Headings */
+    .flip-card-front h2,
+    .flip-card-back h2 {
+        font-size: 26px;
+        margin-bottom: 15px;
+        color: #444;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Description Text */
+    .flip-card-front p,
+    .flip-card-back p {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 25px;
+        line-height: 1.6;
+    }
+
+    /* Input Fields */
+    .flip-card-front input,
+    .flip-card-back input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 14px;
+        background-color: #fff;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .flip-card-front input:focus,
+    .flip-card-back input:focus {
+        border-color: #9370db;
+        box-shadow: 0 0 5px rgba(147, 112, 219, 0.5);
+    }
+
+    /* Buttons */
+    .login-popup-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #9370db;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .login-popup-btn:hover {
+        background-color: #6a5acd;
+        transform: translateY(-2px);
+    }
+
+    /* Forgot Password Link */
+    .forgot-password {
+        display: block;
+        margin-top: 10px;
+        font-size: 12px;
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .forgot-password:hover {
+        color: #9370db;
+        text-decoration: underline;
+    }
+
+    /* Register/Login Links */
+    .register-link {
+        color: #9370db;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .register-link:hover {
+        color: #6a5acd;
+    }
+
+ /* Slideshow */
+     .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0;
+            background: #ede8f8;
+
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .caption {
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s;
+        }
+
+        .next {
+            right: 0;
+        }
+/* Discounted Bundles Section*/
+    .discounted-bundles {
+        text-align: center;
+        padding: 40px 20px;
+        background: #f1ecf7;        
+    }
+
+    .discounted-bundles h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        /* color: #00a27f; */
+        /* color: #b19cd9; Soft lavender */
+        color: #9370db  ;
+    }
+
+    /* Category Grid */
+    .category-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Category Item */
+    .category-item {
+        position: relative;
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        height: 250px; /* Set a fixed height for the category item */
+    }
+
+    /* Default Image */
+    .default-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the container */
+        display: block;
+        transition: display 0.3s ease;
+    }
+
+    /* Hover Image (Hidden by Default) */
+    .hover-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the container */
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+
+    /* Show Hover Image and Hide Default Image on Hover */
+    .category-item:hover .default-image {
+        display: none;
+    }
+
+    .category-item:hover .hover-image {
+        display: block;
+    }
+
+    /* Category Title */
+    .category-item h3 {
+        font-size: 18px;
+        color: #333;
+        padding: 15px;
+        background-color: #f0f0f0;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+    }
+
+/* Styling the Add to Cart button */
+.add-to-cart-btn {
+    position: absolute;
+    bottom: 10px; /* Position it slightly above the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #9370db; /* Lavender background */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Rounded corners for the button */
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif; /* Matching font */
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    transform: translate(-50%, 20px); /* Slightly push it down initially */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Button hover effect */
+.add-to-cart-btn:hover {
+    background-color: #805bb5; /* Slightly darker lavender on hover */
+    transform: translate(-50%, 0); /* Subtle animation */
+}
+
+/* Show button on hover */
+.category-item:hover .add-to-cart-btn {
+    opacity: 1; /* Fully visible */
+    visibility: visible;
+    transform: translate(-50%, 0); /* Move back to position */
+}
+
+
+/* Shop by Category Section */
+    .shop-by-category-section {
+        padding: 40px 20px;
+        background: #f4f4f8;
+    }
+
+    .category-content {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 20px;
+    }
+    .category-text h2{
+        /* color: #00a27f; */
+        /* color: #8b7cc3; */
+        /* color: #5e4787; */
+        color: #9370db  ;
+    }
+
+    .category-text {
+        max-width: 50%;
+        text-align: left;
+        
+    }
+
+    .category-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .category-buttons button {
+        padding: 10px 20px;
+        border: 1px solid #333;
+        border-radius: 20px;
+        background-color: transparent;
+        color: #ece2e2;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .category-buttons button:hover {
+        background-color: hsl(318, 42%, 70%);
+        color: #fffbfb;
+    }
+
+    /* Static Image Styling */
+    .category-image {
+        max-width: 45%; /* Controls the width of the image container */
+        text-align: right; /* Aligns image to the right */
+    }
+
+    .category-image img.static-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px; /* Optional: adds a slight round to corners */
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Optional: adds a soft shadow */
+    }
+
+
+/* Customer Services section (free delivery,24/7 supoort etc ) */
+    .info-section {
+        display: flex;
+        justify-content: space-around;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #dad4eb, #ece8f9);
+    }
+
+    .info-item {
+        text-align: center;
+        flex: 1; /* Each item takes equal space */
+        max-width: 220px; /* Optional: increase max width if needed */
+    }
+
+    .info-icon {
+        margin-bottom: 15px;
+    }
+
+    .info-icon img {
+        width: 70px; /* Increased icon size */
+        height: 70px;
+    }
+
+    .info-item h3 {
+        font-size: 20px; /* Slightly larger font size for title */
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .info-item p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+
+    /* Features Section(HALAL,NATURAL,SULPHATE FREE ETC) */
+    .features-section {
+        display: flex;
+        justify-content: center;
+        gap: 130px; /* gap between icons */
+        padding: 40px 20px;
+        background: #faf8fc;
+    }
+
+    .feature-item {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-icon {
+        width: 120px; /* Increase size of circular icons */
+        height: 120px; /* Increase size of circular icons */
+        background-color: #00a27f; /* Teal color for circle */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px; /* Slightly increase space between icon and text */
+    }
+
+    .feature-icon img {
+        width: 60px; /* Increase size of the inner icon */
+        height: 60px;
+    }
+
+    .feature-item p {
+        font-size: 16px; /* Slightly larger text */
+        font-weight: bold;
+        color: #333; /* Text color */
+        margin: 0;
+    }
+
+    /* Blogs Section Styling */
+    .blogs-section {
+        text-align: center;
+        padding: 40px 20px;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #f5f0ff, #ece8f8);
+    }
+
+    .blogs-section h2 {
+        font-size: 28px;
+        /* color: #00a27f; */
+        color: #9370db;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    /* Blog Cards Grid */
+    .blog-cards {
+        display: flex;
+        gap: 60px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Individual Blog Card */
+    .blog-card {
+        width: 300px;
+        background-color: #eccffa;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Blog Image */
+    .blog-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    /* Blog Content */
+    .blog-content {
+        padding: 15px;
+    }
+
+    .blog-content h3 {
+        font-size: 18px;
+        color: #333;
+        font-weight: normal;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+ /* Footer Section */
+    .footer {
+        background: linear-gradient(135deg, #E6E6FA, #D8BFD8, #E0BBE4);
+        padding: 40px 20px;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* Logo and Description */
+    .footer-logo-description {
+        max-width: 300px;
+    }
+
+    .footer-logo {
+        width: 150px;
+        margin-bottom: 15px;
+    }
+
+    .footer-logo-description p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .footer-logo-description h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+        color: #333;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+        /* color: #00a27f;  */
+        color: #5e4787;
+    }
+
+
+
+
+    /* Footer Links */
+    .footer-links {
+        min-width: 150px;
+    }
+
+    .footer-links h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 8px;
+    }
+
+    .footer-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        /* color: #00a27f; */
+        color: #5e4787;
+    }
+
+    /* Contact Section */
+    .footer-contact h4 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .footer-contact p {
+        font-size: 14px;
+        color: #555;
+        margin: 5px 0;
+    }
+
+    .footer-contact a {
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-contact a:hover {
+        /* color: #00a27f; */
+        color: #5e4787;
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+        text-align: center;
+        padding: 20px 0 10px;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .footer-bottom a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .footer-bottom a:hover {
+        /* color: #00a27f; */
+        color: #5e4787;
+    }
+
+
+    /* Sidebar styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Initially hidden */
+    width: 250px;
+    height: 100%;
+    background-color: #9370db; /* Same as navbar hover color */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: left 0.3s ease; /* Smooth opening */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.sidebar.open {
+    left: 0; /* Slide into view */
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar a:hover {
+    background-color: #805bb5; /* Slightly darker lavender */
+}
+
+/* Hamburger menu styling */
+.threedashesmenu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    z-index: 1100;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1110px) {
+    .navbar-container {
+        display: none; /* Hide the full navbar */
+    }
+
+    .threedashesmenu {
+        display: block; /* Show 3 dashes menu */
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Logo Above Navbar -->
+    <div class="top-logo">
+        <img src="LOGO (2).png" alt="Brand Logo" class="logo-image">
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <!-- Left-aligned Links -->
+            <div class="navbar-left">
+                <a href="homepage.html">HOME</a>
+                <a href="makeup.html">MAKEUP</a>
+                <a href="skincare.html">SKINCARE</a>
+                <a href="haircare.html">HAIRCARE</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle">BUNDLES <span class="dropdown-arrow"> ▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="#skincarebundlesection">Skincare</a>
+                        <a href="#makeupbundlesection">Makeup</a>
+                    </div>
+                </div>
+                <a href="#blogsSection">BLOGS</a>
+            </div>
+            
+            <!-- Right-aligned Icons -->
+            <div class="navbar-right">
+                <a href="#" class="icon-link"  onclick="openLoginPopup()">👤</a>
+                <a href="#" class="icon-link" onclick="openCartPanel()">🛒</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3 dashes Menu -->
+<div class="threedashesmenu" onclick="toggleSidebar()">☰</div>
+
+<!-- Sidebar Navigation -->
+<div id="sidebar" class="sidebar">
+    <a href="homepage.html">HOME</a>
+    <a href="makeup.html">MAKEUP</a>
+    <a href="skincare.html">SKINCARE</a>
+    <a href="haircare.html">HAIRCARE</a>
+    <a href="#blogs-section">BLOGS</a>
+</div>
+
+    
+ <!-- Login Popup -->
+<div id="loginPopup" class="login-popup">
+    <div class="flip-card">
+        <!-- Front Side: Login Form -->
+        <div class="flip-card-front">
+            <span class="close-login-btn" onclick="closeLoginPopup()">✖</span>
+            <h2>LOGIN</h2>
+            <p>Please enter your e-mail and password:</p>
+            <form>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="login-popup-btn">LOGIN</button>
+            </form>
+            <a href="#" class="forgot-password">Forgot your password?</a>
+            <p>New customer? <a href="#" class="register-link" onclick="flipToRegister()">Register</a></p>
+        </div>
+
+        <!-- Back Side: Register Form -->
+        <div class="flip-card-back">
+            <span class="close-login-btn" onclick="closeLoginPopup()">✖</span>
+            <h2>REGISTER</h2>
+            <p>Please fill in the fields below:</p>
+            <form>
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="login-popup-btn">CREATE</button>
+            </form>
+            <p>Already a member? <a href="#" class="register-link" onclick="flipToLogin()">Login</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+   <!-- Cart Side Panel -->
+    <div id="cartPanel" class="cart-panel">
+        <div class="cart-panel-content">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <span class="close-cart-btn" onclick="closeCartPanel()">✖</span>
+            </div>
+            <p class="cart-status">Your cart is currently empty</p>
+            <hr class="cart-divider">
+        </div>
+        <div class="cart-footer">
+                <!-- Subtotal -->
+                <div class="cart-subtotal">
+                    <p>Subtotal</p>
+                    <p>PKR 0</p>
+                </div>
+                <!-- Checkout Button -->
+                <!-- <button class="checkout-btn">Proceed to Checkout</button> -->
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+
+
+  <!-- Slideshow Section -->
+    <div class="slideshow-container">
+        <!-- <div class="slide fade">
+            <img src="slideshowpic1.jpeg" alt="Image 1" class="slide-image">
+        </div> -->
+
+        <div class="slide fade">
+            <img src="slideshow1.jpeg" alt="Image 2" class="slide-image">
+        </div>
+
+        <div class="slide fade">
+            <img src="slideshow2.jpeg" alt="Image 3" class="slide-image">
+        </div>
+
+        <div class="slide fade">
+            <img src="slideshow4.jpeg" alt="Image 4" class="slide-image">
+        </div>
+
+        <div class="slide fade">
+            <img src="slideshow6.jpeg" alt="Image 5" class="slide-image">
+        </div>
+
+        <div class="slide fade">
+            <img src="slideshow3.jpeg" alt="Image 6" class="slide-image">
+        </div>
+
+        <div class="slide fade">
+            <img src="slideshow7.jpeg" alt="Image 7" class="slide-image">
+        </div>
+
+        <!-- <div class="slide fade">
+            <img src="freepik-export-202411142029395nLL.png" alt="Image 8" class="slide-image">
+        </div> -->
+    
+
+        <a class="prev" onclick="changeSlide(-1)">❮</a>
+        <a class="next" onclick="changeSlide(1)">❯</a>
+    </div>
+
+    <!-- SKINCARE BUNDLES SECTION -->
+    <section class="discounted-bundles" id="skincarebundlesection">
+        <h2>DISCOUNTED SKINCARE BUNDLES</h2>
+        <div class="category-grid">
+            <div class="category-item">
+                <img src="pexels-harper-sunday-3751227.jpg" alt="Category 1" class="default-image">
+                <img src="ACNE.jpg" alt="Category 1 Hover" class="hover-image">
+                <button class="add-to-cart-btn" onclick="showmessage()">Add to Cart</button>
+            </div>
+            <div class="category-item">
+                <img src="pexels-polina-kovaleva-8101134.jpg" alt="Category 2" class="default-image">
+                <img src="PIGMENTATION.jpg" alt="Category 2 Hover" class="hover-image">
+                <button class="add-to-cart-btn" onclick="showmessage()">Add to Cart</button>
+            </div>
+            <div class="category-item">
+                <img src="bundle3.jpg" alt="Category 3" class="default-image">
+                <img src="DULL SKIN.png" alt="Category 3 Hover" class="hover-image">
+                <button class="add-to-cart-btn" onclick="showmessage()">Add to Cart</button>
+            </div>
+            <div class="category-item">
+                <img src="bundle4.jpg" alt="Category 4" class="default-image">
+                <img src="TEXTURED SKIN.png" alt="Category 4 Hover" class="hover-image">
+                <button class="add-to-cart-btn" onclick="showmessage()">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- MMAKEUP BUNDLES SECTION -->
+    <section class="discounted-bundles" id="makeupbundlesection">
+        <h2>EXCLUSIVE MAKEUP BUNDLES</h2>
+        <div class="category-grid">
+            <div class="category-item">
+                <img src="blushbundle.avif" alt="Category 1" class="default-image">
+                <img src="blushbundlehover.webp" alt="Category 1 Hover" class="hover-image">
+                <button class="add-to-cart-btn" onclick="showmessage()">Add to Cart</button>
+            </div>
+            <div class="category-item">
+                <img src="lipglossbundle.avif" alt="Category 2" class="default-image">
+                <img src="lipglosshover.jpg" alt="Category 2 Hover" class="hover-image">
+                <button class="add-to-cart-btn" onclick="showmessage()">Add to Cart</button>
+            </div>
+            <div class="category-item">
+                <img src="nailbundle.jpg" alt="Category 3" class="default-image">
+                <img src="nailbundlehover.jpg" alt="Category 3 Hover" class="hover-image">
+                <button class="add-to-cart-btn" onclick="showmessage()">Add to Cart</button>
+            </div>
+            <div class="category-item">
+                <img src="MAKEUPBUNDLE.jpg" alt="Category 4" class="default-image">
+                <img src="makeupbundle4.jpg" alt="Category 4 Hover" class="hover-image">
+                <button class="add-to-cart-btn" onclick="showmessage()">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop by Category Section -->
+    <section class="shop-by-category-section">
+        <div class="category-content">
+            <div class="category-text">
+                <h2>SHOP BY CATEGORY</h2>
+                <p>Discover rituals and regimens for your best skin.</p>
+                <div class="category-buttons">
+                    <button><a href="skincare.html" style="text-decoration: none;">Skincare</a></button>
+                    <button><a href="haircare.html" style="text-decoration: none;">Haircare</a></button>
+                    <button><a href="makeup.html" style="text-decoration: none;">Makeup</a></button>
+                    <button><a href="haircare.html" style="text-decoration: none;">Shampoos</a></button>
+                    <button><a href="makeup.html" style="text-decoration: none;">Face Serums</a></button>
+                    <button><a href="haircare.html" style="text-decoration: none;">Hair Oils & Serums</a></button>
+                </div>
+            </div>
+             <!-- Right Side: Static Image -->
+            <div class="category-image">
+                <img src="image1.jpg" alt="Shop by Category" class="static-image">
+            </div>  
+        </div>
+    </section>
+
+    <section class="blogs-section" id="blogsSection">
+    <h2>BLOGS</h2>
+    <div class="blog-cards">
+
+         <!-- Blog Card 1 -->
+        <div class="blog-card">
+            <a href="blogpage1.html" target="_blank" style="text-decoration: none;">
+            <img src="blog1.jpg" alt="Blog 1 Image" class="blog-image">
+            <div class="blog-content">
+                <h3>Your Winter Skincare Essentials for That Coveted Dewy Look</h3>
+            </div>
+        </div>
+
+        <!-- Blog Card 2 -->
+        <div class="blog-card">
+            <a href="blogpage2.html" target="_blank" style="text-decoration: none;">
+            <img src="blog2hover.jpg" alt="Blog 2 Image" class="blog-image">
+            <div class="blog-content">
+                <h3>Makeup Made Easy: A Beginner's 5-Step Guide to Flawless Beauty</h3>
+            </div>
+        </div>
+
+        <!-- Blog Card 3 -->
+        <div class="blog-card">
+            <a href="blogpage3.html" target="_blank" style="text-decoration: none;">
+                <img src="blog3.jpg" alt="Blog 3 Image" class="blog-image">
+            <div class="blog-content">
+                <h3>Your Golden Hour Companion: Elevate Your Sun Protection with ESTA</h3>
+            </div>
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+  <!-- CUSTOMER  SERVICES FEATURES -->
+  <section class="info-section">
+    <div class="info-item">
+        <div class="info-icon">
+            <img src="freedelivery.png" alt="Free Delivery Icon">
+        </div>
+        <h3>Free Delivery</h3>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adip</p> -->
+    </div>
+    <div class="info-item">
+        <div class="info-icon">
+            <img src="securepayment.png" alt="Secure Payments Icon">
+        </div>
+        <h3>Secure Payments</h3>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adip</p> -->
+    </div>
+    <div class="info-item">
+        <div class="info-icon">
+            <img src="247support.png" alt="24/7 Support Icon">
+        </div>
+        <h3>24/7 Support</h3>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adip</p> -->
+    </div>
+</section>
+
+
+    <!-- FOOTER SECTION -->
+         <footer class="footer">
+         <div class="footer-container">
+            <!-- Logo and Description -->
+            <div class="footer-logo-description">
+                <img src="LOGO (2).png" alt="ESTA Logo" class="footer-logo">
+                <p>ESTA IS A SCIENTIFIC, RESULTS-BASED SKINCARE COMPANY PROVIDING SAFE AND EFFECTIVE SKINCARE SOLUTIONS.</p>
+        
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+
+            <!-- Footer Links -->
+            <div class="footer-links">
+                <h4>ABOUT</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>SHOP</h4>
+                <ul>
+                    <li><a href="homepage.html">Shop All</a></li>
+                    <li><a href="makeup.html">Makeup</a></li>
+                    <li><a href="skincare.html">Skincare</a></li>
+                    <li><a href="haircare.html">Haircare</a></li>
+
+                </ul>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="footer-contact">
+                <h4>GET IN TOUCH</h4>
+                <p>T: +92 326 6016012</p>
+                <p>E: <a href="mailto:info@ESTA.com">info@ESTA.com</a></p>
+                <p>Formulated and Manufactured by ESTA.</p>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>COPYRIGHT © 2024 <a href="homepage.html">ESTA</a> | ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+    
+<!-- javascript -->
+    <script>
+        let slideIndex = 0;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex].style.display = "block";
+        }
+
+        setInterval(() => { changeSlide(1); }, 3000);
+
+     // Function to open the cart panel
+function openCartPanel() {
+    const cartPanel = document.getElementById("cartPanel");
+    cartPanel.style.width = "350px"; // Open the cart panel
+}
+
+// Function to close the cart panel
+function closeCartPanel() {
+    const cartPanel = document.getElementById("cartPanel");
+    cartPanel.style.width = "0"; // Close the cart panel
+}
+
+        // Open Login Popup
+        function openLoginPopup() {
+            document.getElementById("loginPopup").style.display = "flex";
+        }
+
+        // Close Login Popup
+        function closeLoginPopup() {
+            document.getElementById("loginPopup").style.display = "none";
+        }
+
+        // Flip to Register Form
+        function flipToRegister() {
+            document.querySelector(".flip-card").classList.add("flipped");
+        }
+
+        // Flip to Login Form
+        function flipToLogin() {
+            document.querySelector(".flip-card").classList.remove("flipped");
+        }
+
+//side bar function
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("open");
+}
+
+// Function to handle Add to Cart button click
+function showmessage(){
+        alert("Item Added To The Cart Successfully.");
+    }
+
+    </script>
+</body>
+</html>
