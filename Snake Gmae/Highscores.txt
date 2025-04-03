@@ -1,6 +1,0 @@
-; 30
-aly 30
-op\PF\PF 0
-PROJECT\" 0
-teswt 0
-gugbgc 0
