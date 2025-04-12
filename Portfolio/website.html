@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ===== BASE STYLES ===== */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        /* ===== NAVBAR STYLES ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: purple;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #fc00ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #fc00ff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #fc00ff;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Typewriter effect for h2 */
+        .typewriter {
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid #69226a; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation: 
+                typing 2.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* The cursor blink effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #69226a; }
+        }
+
+        h2 {
+            color: #69226a;
+            font-size: 2.5rem;
+            margin: 2rem 0;
+            display: inline-block;
+        }
+
+        .esta {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .esta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .esta h3 {
+            color: #69226a;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .esta p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* New styles for the feature list */
+        .feature-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(105, 34, 106, 0.2);
+            margin: 1.5rem 0;
+            border-left: 4px solid #69226a;
+        }
+
+        .feature-list {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            color: #555;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "•";
+            color: #69226a;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="Portfolio.html" class="active">Home</a>
+            <a href="Portfolio.html#about">About</a>
+            <a href="Portfolio.html#projects">Projects</a>
+            <a href="Portfolio.html#socials">Socials</a>
+        </div>
+    </nav>
+
+    <h2 class="typewriter">FRONTEND PROJECTS</h2>
+
+    <div class="esta">
+      <h3>E-Commerce Shopping Store</h3>
+      <p>Developed a comprehensive e-commerce platform specializing in beauty and cosmetics products with the following features:</p>
+      
+      <div class="feature-box">
+          <ul class="feature-list">
+              <li>Fully responsive design with mobile-first approach (works seamlessly on all devices)</li>
+              <li>Interactive product showcases with hover effects and quick-view functionality</li>
+              <li>Advanced filtering system for products (by category, price range, skin type)</li>
+              <li>Secure checkout process with multiple payment gateway integrations</li>
+              <li>Customer account management with order history tracking</li>
+              <li>Dynamic shopping cart with real-time updates</li>
+          </ul>
+          <p>The store implements modern UI/UX principles with a soft lavender color scheme that aligns with the beauty brand aesthetic. Built with HTML5, CSS3, and JavaScript for frontend functionality, including interactive elements like the sliding cart panel and login/registration system.</p>
+      </div>
+  </div>
+
+    <div class="esta">
+        <h3>Amazon Clone (Front Page)</h3>
+        <p>Designed a visually engaging and fully responsive front page inspired by Amazon, featuring a sleek layout, intuitive navigation, and dynamic product displays. Implemented a seamless user interface with interactive categories, promotional banners, and an optimized search bar to enhance the browsing experience. Focused on performance, accessibility, and modern UI elements to create</p>
+    </div>
+
+    <div class="esta">
+        <h3>Dynamic Photography Gallery</h3>
+        <p>Developed a fully responsive photography showcase featuring four immersive categories:</p>
+        
+        <div class="feature-box">
+            <ul class="feature-list">
+                <li>Nature's Majesty (breathtaking landscapes)</li>
+                <li>Urban Pulse (city life photography)</li>
+                <li>Human Essence (portrait collection)</li>
+                <li>Abstract Visions (creative compositions)</li>
+            </ul>
+            <p>The gallery implements a dual-mode interface with seamless dark/light theme toggling that preserves optimal viewing contrast. Built with mobile-first responsive design using CSS Grid/Flexbox and optimized image loading techniques.</p>
+        </div>
+    </div>
+
+    <div class="esta">
+        <h3>Interactive Calculator</h3>
+        <p>Built a fully functional calculator with a clean, modern interface using HTML, CSS, and JavaScript. The calculator performs all basic arithmetic operations (addition, subtraction, multiplication, division) with precision. Features include responsive design, keyboard support, error handling, and a visually appealing color scheme with smooth button animations for enhanced user experience.</p>
+    </div>
+
+</body>
+</html>
